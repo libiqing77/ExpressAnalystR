@@ -409,8 +409,8 @@ qc.pcaplot <- function(dataSet, x, imgNm, dpi=72, format="png", interactive=F){
         ylab(ylabel) + 
         facet_grid(. ~ variable) +
         theme_bw() +
-        scale_color_okabeito() +
-        scale_fill_okabeito()
+        scale_color_okabe_ito() +
+        scale_fill_okabe_ito()
 
     }else{
 
@@ -423,8 +423,8 @@ qc.pcaplot <- function(dataSet, x, imgNm, dpi=72, format="png", interactive=F){
         ylab(ylabel) + 
         geom_text_repel(force=1.5) + 
         facet_grid(. ~ variable) + theme_bw() +
-        scale_color_okabeito() +
-        scale_fill_okabeito()
+        scale_color_okabe_ito() +
+        scale_fill_okabe_ito()
     }
     width <- 12
     height <- 6
@@ -466,7 +466,7 @@ qc.pcaplot <- function(dataSet, x, imgNm, dpi=72, format="png", interactive=F){
       col.pal <- pal(length(unique(pca.rest$Conditions)))
       pcafig <- pcafig + scale_fill_manual(values = col.pal) + scale_color_manual(values = col.pal)
     } else {
-      pcafig <- pcafig + scale_fill_okabeito() + scale_color_okabeito()
+      pcafig <- pcafig + scale_fill_okabe_ito() + scale_color_okabe_ito()
     }
   }
 
