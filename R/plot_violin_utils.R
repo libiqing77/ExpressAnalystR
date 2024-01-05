@@ -67,7 +67,7 @@ PlotSelectedGene <-function(dataName="",imageName="", gene.id="", type="notvolca
             scale_color_manual(values = col.pal) +
             theme(axis.text.x = element_text(angle = 45, hjust = 1))
         } else {
-          p.norm <- p.norm + scale_fill_okabe_ito() + scale_color_okabeito()
+          p.norm <- p.norm + scale_fill_okabe_ito() + scale_color_okabe_ito()
         }
       }else{
         df.norm$name <- as.numeric(df.norm$name )
@@ -117,7 +117,7 @@ PlotSelectedGene <-function(dataName="",imageName="", gene.id="", type="notvolca
         theme(axis.title.x = element_blank(), legend.position = "none", axis.text.x = element_text(angle=90, hjust=1),
               plot.title = element_text(size = 11, hjust=0.5, face = "bold"), panel.grid.minor = element_blank(), panel.grid.major = element_blank()) + 
         scale_fill_okabe_ito() + 
-        scale_color_okabeito() + 
+        scale_color_okabe_ito() + 
         ggtitle(cmpdNm) + 
         ylab("Expression") +
         theme_bw()
@@ -251,7 +251,7 @@ UpdateMultifacPlot <-function(dataName="",imgName, gene.id, boxmeta,format="png"
         theme(legend.position = "none") +  xlab(boxmeta) +
         stat_summary(fun=mean, colour="yellow", geom="point", shape=18, size=3, show.legend = FALSE) +
         scale_fill_okabe_ito() + 
-        scale_color_okabeito() + 
+        scale_color_okabe_ito() + 
         ggtitle(cmpdNm) + 
         theme(axis.text.x = element_text(angle=90, hjust=1), plot.title = element_text(size = 11, hjust=0.5), panel.grid.minor = element_blank(), panel.grid.major = element_blank())
     }else{
