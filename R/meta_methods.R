@@ -910,7 +910,7 @@ DoMetaSigUpdate <- function(BHth=0.05,fc.val=0){
 
   #增加了这一部分，否则meta_sig_genes_里面是所有的结果，不是sig的结果
   res_sig=subset(analSet$meta.res.table,CombinedPval<BHth & abs(AverageFc)>paramSet$fc.thresh)
-  fast.write(res_sig, file=paste("meta_sig_genes_", paramSet$inmex.method, ".csv", sep=""), row.names=F);
+  fast.write(res_sig, file=paste("meta_sig_genes_pval_",BHth,"_","fc_",paramSet$fc.thresh,"_method_", paramSet$inmex.method, ".csv", sep=""), row.names=F);
   
     return(nrow(analSet$meta.mat));
 }
