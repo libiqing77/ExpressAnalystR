@@ -123,15 +123,15 @@ GetSigGenes <-function(dataName="", res.nm="nm", p.lvl=0.05, fc.lvl=1, inx=1, FD
   dataSet$sig.mat <- resTable;
   
   if (dataSet$annotated){ # annotated to entrez
-    anot.id <- rownames(dataSet$comp.res);
+    anot.id <- rownames(dataSet$sig.mat);
     gene.anot <- doEntrezIDAnot(anot.id, paramSet$data.org, paramSet$data.idType);
-    fast.write(cbind(EntrezID=anot.id, signif (dataSet$comp.res,5), Symbols = gene.anot$symbol,  Name=gene.anot$name), row.names=F, file=filename);
+    fast.write(cbind(EntrezID=anot.id, signif (dataSet$sig.mat,5), Symbols = gene.anot$symbol,  Name=gene.anot$name), row.names=F, file=filename);
   } else if (file.exists("annotation.qs")){ # annotation information available
     anot.id <- qs::qread("annotation.qs");
-    feature.vec <- rownames(dataSet$comp.res);
+    feature.vec <- rownames(dataSet$sig.mat);
     entrez.vec <- anot.id[feature.vec];
     gene.anot <- doEntrezIDAnot(entrez.vec, paramSet$data.org, paramSet$data.idType);
-    fast.write(cbind(signif (dataSet$comp.res,5), EntrezID=entrez.vec, Symbols = gene.anot$symbol,  Name=gene.anot$name), row.names=F, file=filename);
+    fast.write(cbind(signif (dataSet$sig.mat,5), EntrezID=entrez.vec, Symbols = gene.anot$symbol,  Name=gene.anot$name), row.names=F, file=filename);
     rownames(gene.anot) <- feature.vec;
   } else {
     gene.anot <- NULL;
@@ -170,7 +170,7 @@ GetSigGenes <-function(dataName="", res.nm="nm", p.lvl=0.05, fc.lvl=1, inx=1, FD
   dataSet$fc.val <- fc.lvl;
   dataSet$comp.res.filename <- filename;
   res <- RegisterData(dataSet);
-  if(res == 1){
+  if(is.null(res)){
     return(c(filename, de.Num, geneList, total, up, down, non.de.Num));
   }
 }
