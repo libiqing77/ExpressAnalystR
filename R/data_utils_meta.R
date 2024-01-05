@@ -289,7 +289,8 @@ SetupMetaStats <- function(BHth=0.05, paramSet,analSet){
     res <- cbind(ID=metade.genes, dat.mat);
   }
   analSet$meta.res.table <- res;
-  fast.write(res, file=paste("meta_sig_genes_", paramSet$inmex.method, ".csv", sep=""), row.names=F);
+  res_sig=subset(res,CombinedPval<BHth & abs(AverageFc)>paramSet$fc.thresh)	
+  fast.write(res_sig, file=paste("meta_sig_genes_", paramSet$inmex.method, ".csv", sep=""), row.names=F);
   
   return(list(paramSet, analSet))
 }
