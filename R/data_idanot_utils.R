@@ -210,11 +210,11 @@ AnnotateGeneData <- function(dataName, org, lvlOpt, idtype){
     # update
     
     data.annotated <-int.mat;
-    rownames(int.mat) <- matched.entrez
+    #rownames(int.mat) <- matched.entrez
     if(idtype %in% c("mir_id", "mir_acc", "mirnet")){
       rownames(data.annotated) <- rownames(int.mat);
     }else{
-      rownames(data.annotated) <- matched.entrez
+      rownames(data.annotated) <- rownames(int.mat)
     }
     dataSet$enrich_ids = rownames(int.mat);
     names(dataSet$enrich_ids) = doEntrez2SymbolMapping(rownames(int.mat), paramSet$data.org, paramSet$data.idType)
