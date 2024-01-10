@@ -196,8 +196,9 @@ AnnotateGeneData <- function(dataName, org, lvlOpt, idtype){
   hit.inx <- which(!is.na(enIDs));
   matched.len <- length(hit.inx);
   if(matched.len > 1){
-    data.norm <- data.raw[hit.inx,];
+    data.norm <- as.matrix(data.raw[hit.inx,]);
     matched.entrez <- enIDs[hit.inx];
+    
     rownames(data.norm)=matched.entrez
     
     # now, deal with duplicated entrez id
